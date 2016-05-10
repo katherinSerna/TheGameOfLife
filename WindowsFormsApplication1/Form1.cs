@@ -14,9 +14,10 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         Tablero t;
-        public Form1()
+        public Form1(string nicks)
         {
             InitializeComponent();
+            nombresito.Text = nicks;
             t = new Tablero(10);
         }
 
@@ -36,6 +37,11 @@ namespace WindowsFormsApplication1
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             t.Dibuja(this);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
