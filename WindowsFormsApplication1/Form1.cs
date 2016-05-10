@@ -43,6 +43,21 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            t.next();
+            t.update();
+            this.Invalidate();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            t = new Tablero(10);    //Al dar click en repetir la tabla se volvera a dibujar
+            t.Dibuja(this);
+            this.Invalidate();
+        }
     }
 }
 
