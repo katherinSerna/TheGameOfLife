@@ -44,7 +44,13 @@ namespace WindowsFormsApplication1
     class Tablero
     {
         List<List<Celda>> tablero;
-        int tamaño;
+
+        public int tamaño;
+        public int limite;
+        public int limites;
+        public int muertas;
+        public int vivas;
+     //   int tamaño;
         Random r = new Random();
         public Tablero(int tamaño)
         {
@@ -73,8 +79,16 @@ namespace WindowsFormsApplication1
                 }
         }
 
-        public void next()
+
+        public void next(ref int limites, ref int muertas, ref int vivas)
         {
+            this.limites = limites;
+
+            this.muertas = muertas;
+            muertas = 0;
+            vivas = 0;
+            this.vivas = vivas;
+
             for (int i = 0; i < tamaño; i++)
                 for (int j = 0; j < tamaño; j++)
                 {
@@ -96,6 +110,18 @@ namespace WindowsFormsApplication1
                             tablero[i][j].estado_siguiente = Celda.Estado.muerta;
                         }
 
+
+
+                        for (int a = 0; a < tamaño; a++)
+                        {
+                            for (int b = 0; b < tamaño; b++)
+                            {
+                                if (i == a && j == b)
+                                {
+                                    vivas++;
+                                }
+                            }
+                        }
                     }
                     //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
                     else
@@ -105,10 +131,25 @@ namespace WindowsFormsApplication1
                             tablero[i][j].estado_siguiente = Celda.Estado.viva;
 
                         }
+
+                                    for (int a = 0; a < tamaño; a++)
+                                    {
+
+                                        for (int b = 0; b < tamaño; b++)
+                                        {
+
+                                            if (i == a && j == b)
+                                            {
+
+                                                muertas++;
+
+                                            }
+
+                                        }
+                        }
                     }
 
                 }
-
         }
 
         public void update()
