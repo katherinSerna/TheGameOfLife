@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
     {
         public Form2()
         {
+            StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
         }
 
@@ -24,35 +25,16 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //   Form1 nombre = new Form1();
-            //   nombre.nombre.Text = nick.Text;
-
-
-            /* Form form = new Form1();
-             form.Show();
-             */
-            //   t.next(ref limites, ref muertas, ref vivas, ref ContMm);
-            //  ContMm = Convert.ToString(muertas);
-
+            
+            this.Hide();
 
             String texto = nick.Text;
 
-            Form1 m = new Form1(texto);
+            Form1 m = new Form1("Hello!     "+texto+ "     Now we try to heal the population");
 
             m.Show();
-
-
-            //    m.Visible = true;
-            /*  m.Show();
-
-              if (texto != string.Empty)
-              {
-                  m.Visible = true;
-              }
-              else
-              {
-                  m.Visible = false;
-              }*/
+                    
+    
         }
 
         private void nick_TextChanged(object sender, EventArgs e)
