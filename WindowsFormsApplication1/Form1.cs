@@ -20,15 +20,16 @@ namespace WindowsFormsApplication1
         public int muertas;
         public int vivas;
         int conteo;
-        public int size;
+        public int size = 10;
 
         public Form1(string nicks)
         {
+            StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
             nombresito.Text = nicks;
             limites = 0;
             conteo = 0;
-            t = new Tablero(10);
+            t = new Tablero(size);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,9 +39,6 @@ namespace WindowsFormsApplication1
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            t.next(ref limites, ref muertas, ref vivas);
-            t.update();
-            this.Invalidate();
 
         }
 
@@ -89,8 +87,7 @@ namespace WindowsFormsApplication1
             if (conteo < limites)
             {
                 conteo = conteo + 1;
-                contador.Text = Convert.ToString(conteo);
-                label3.Text = Convert.ToString(conteo);
+                contador.Text = Convert.ToString(conteo);            
                 ContV.Text = Convert.ToString(vivas);
                 //   ContMm = ContM.Text;
                 ContM.Text = Convert.ToString(muertas);
@@ -111,7 +108,7 @@ namespace WindowsFormsApplication1
             t = new Tablero(10);
             t.Dibuja(this);
             this.Invalidate();
-            label3.Text = Convert.ToString(conteo);
+        
 
 
 
@@ -133,7 +130,7 @@ namespace WindowsFormsApplication1
             {
                 conteo = conteo + 1;
                 contador.Text = Convert.ToString(conteo);
-                label3.Text = Convert.ToString(conteo);
+               
 
                 //   ContMm = ContM.Text;
                 ContM.Text = Convert.ToString(muertas);
@@ -141,6 +138,59 @@ namespace WindowsFormsApplication1
                 //  MessageBox.Show("AQUI TERMINA");
             }
         }
-    }
-}
 
+        private void Dimension_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Dimension.SelectedIndex == 0)
+            {
+                size = 5;
+                this.Invalidate();
+                t = new Tablero(size);
+            }
+            else if (Dimension.SelectedIndex == 1)
+            {
+                size = 6;
+                this.Invalidate();
+                t = new Tablero(size);
+            }
+            else if (Dimension.SelectedIndex == 2)
+            {
+                size = 7;
+                this.Invalidate();
+                t = new Tablero(size);
+            }
+
+            else if (Dimension.SelectedIndex == 3)
+            {
+                size = 8;
+                this.Invalidate();
+                t = new Tablero(size);
+            }
+            else if (Dimension.SelectedIndex == 4)
+            {
+                size = 9;
+                this.Invalidate();
+                t = new Tablero(size);
+            }
+
+            else if (Dimension.SelectedIndex == 5)
+            {
+                size = 10;
+                this.Invalidate();
+                t = new Tablero(size);
+            }
+
+
+
+        }
+
+       
+
+        private void nombresito_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+          
+        }
+  
